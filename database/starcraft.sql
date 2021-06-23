@@ -259,9 +259,9 @@ INSERT INTO `zergUnit` (`id`, `imagePath`, `name`, `char`, `mineral`, `gas`, `po
     (null, 'images/zerg/larva.png', '라바', '지상, 소형, 생체', 0, 0, 0, 0, '25', '10', 1, '저그 유닛의 시작', null, null, null, null, null, null, null, null, 1),
     (null, 'images/zerg/drone.png', '드론', '지상, 소형, 생체', 50, 0, 1, 20, '40', '0 (+1)', 2, '자원 채취 가능, 저그 건물로 변태 가능', '5', null, '1', null, 6, null, null, null, 1),
     (null, 'images/zerg/zergling.png', '저글링', '지상, 소형, 생체', 50, 0, 1, 28, '35', '0 (+1)', 4, '생성시 2마리가 생성', '5 (+1)', null, '1', null, 6, null, null, null, 8),
-    (null, 'images/zerg/overload.png', '오버로드', '공중, 대형, 생체', 100, 0, 0, 40, '200', '0 (+1)', 0, '인구수 8 제공, 탐지 능력', null, null, null, null, 7, null, null, null, 1),
+    (null, 'images/zerg/overlord.png', '오버로드', '공중, 대형, 생체', 100, 0, 0, 40, '200', '0 (+1)', 0, '인구수 8 제공, 탐지 능력', null, null, null, null, 7, null, null, null, 1),
     (null, 'images/zerg/hydralisk.png', '히드라리스크', '지상, 중형, 생체', 75, 25, 1, 28, '80', '0 (+1)', 2, '원거리 유닛으로 지상과 공중을 모두 공격 가능', '10 (+1)', '10 (+1)', '4 (+1)', '4 (+1)', 6, 8, null, null, 10),
-    (null, 'images/zerg/mutalist.png', '뮤탈리스크', '공중, 소형, 생체', 100, 100, 2, 40, '120', '0 (+1)', 3, '공격시 투사체가 튕겨 주변의 적을 공격', '9 (+3)', '9 (+3)', '3', '3', 9, null, null, null, 11),
+    (null, 'images/zerg/mutalisk.png', '뮤탈리스크', '공중, 소형, 생체', 100, 100, 2, 40, '120', '0 (+1)', 3, '공격시 투사체가 튕겨 주변의 적을 공격', '9 (+3)', '9 (+3)', '3', '3', 9, null, null, null, 11),
     (null, 'images/zerg/scourge.png', '스커지', '공중, 소형, 생체', 25, 75, 1, 30, '25', '0 (+1)', 3, '생성시 2마리가 생성, 공격시 자살', null, '110', null, '1', null, null, null, null, 11),
     (null, 'images/zerg/queen.png', '퀸', '공중, 중형, 생체', 100, 100, 2, 50, '120', '0 (+1)', 3, '마법을 사용, 사령부 감염 가능', null, null, null, null, 10, 11, 12, 13, 13),
     (null, 'images/zerg/lurker.png', '러커', '지상, 중형, 생체', 50, 100, 2, 40, '125', '1 (+1)', 3, '버로우 상태에서만 공격이 가능, 직선으로 범위 공격', '20 (+2)', null, '6', null, 6, null, null, null, 10),
@@ -354,7 +354,7 @@ LEFT OUTER JOIN (select skill.id, skill.name, skill.mp, skill.desc from zergUnit
 LEFT OUTER JOIN (select skill.id, skill.name, skill.mp, skill.desc from zergUnit, skill WHERE zergUnit.skill_2_ID = skill.id) as b ON zergUnit.skill_2_ID = b.id
 LEFT OUTER JOIN (select skill.id, skill.name, skill.mp, skill.desc from zergUnit, skill WHERE zergUnit.skill_3_ID = skill.id) as c ON zergUnit.skill_3_ID = c.id
 LEFT OUTER JOIN (select skill.id, skill.name, skill.mp, skill.desc from zergUnit, skill WHERE zergUnit.skill_4_ID = skill.id) as d ON zergUnit.skill_4_ID = d.id
-LEFT OUTER JOIN protossBuild as build ON zergUnit.building_ID = build.id;
+LEFT OUTER JOIN zergBuild as build ON zergUnit.building_ID = build.id;
 
 #테란 유닛 정보
 select DISTINCT terranUnit.name, terranUnit.imagePath, (terranUnit.char) as `character`, terranUnit.mineral, terranUnit.gas, terranUnit.population, terranUnit.time, terranUnit.health, terranUnit.armor, terranUnit.speed, (terranUnit.desc) as unit_desc, terranUnit.groundDamage, terranUnit.groundRange, terranUnit.airDamage, terranUnit.airRange, (build.name) as build, (a.name) as skill_1, (a.desc) as skill_1_desc, (b.name) as skill_2, (b.desc) as skill_2_desc, (c.name) as skill_3, (c.desc) as skill_3_desc, (d.name) as skill_4, (d.desc) as skill_4_desc from terranUnit 
@@ -362,7 +362,7 @@ LEFT OUTER JOIN (select skill.id, skill.name, skill.mp, skill.desc from terranUn
 LEFT OUTER JOIN (select skill.id, skill.name, skill.mp, skill.desc from terranUnit, skill WHERE terranUnit.skill_2_ID = skill.id) as b ON terranUnit.skill_2_ID = b.id
 LEFT OUTER JOIN (select skill.id, skill.name, skill.mp, skill.desc from terranUnit, skill WHERE terranUnit.skill_3_ID = skill.id) as c ON terranUnit.skill_3_ID = c.id
 LEFT OUTER JOIN (select skill.id, skill.name, skill.mp, skill.desc from terranUnit, skill WHERE terranUnit.skill_4_ID = skill.id) as d ON terranUnit.skill_4_ID = d.id
-LEFT OUTER JOIN protossBuild as build ON terranUnit.building_ID = build.id;
+LEFT OUTER JOIN terranBuild as build ON terranUnit.building_ID = build.id;
 
 #프로토스 유닛 정보
 select DISTINCT protossUnit.name, protossUnit.imagePath, (protossUnit.char) as `character`, protossUnit.mineral, protossUnit.gas, protossUnit.population, protossUnit.time, protossUnit.health, protossUnit.shield, protossUnit.armor, protossUnit.speed, (protossUnit.desc) as unit_desc, protossUnit.groundDamage, protossUnit.groundRange, protossUnit.airDamage, protossUnit.airRange, (build.name) as build, (a.name) as skill_1, (a.desc) as skill_1_desc, (b.name) as skill_2, (b.desc) as skill_2_desc, (c.name) as skill_3, (c.desc) as skill_3_desc, (d.name) as skill_4, (d.desc) as skill_4_desc from protossUnit 

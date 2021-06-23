@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function protossBuildTable() {
+export default function zergBuildTable() {
 	return (
 		<div>
 			<Header />
@@ -11,7 +11,7 @@ export default function protossBuildTable() {
 }
 
 const Header = () => {
-	return <h1><a href='https://db-final-nextapi-aikcx.run.goorm.io'>StarCraft Protoss Buildings</a></h1>
+	return <h1><a href='https://db-final-nextapi-aikcx.run.goorm.io'>StarCraft Zerg Buildings</a></h1>
 }
 
 const Table = () => {
@@ -19,7 +19,7 @@ const Table = () => {
 	
 	const fetchUnit = async () => {
 		try {
-			const res = await axios.get('https://db-final-nextapi-aikcx.run.goorm.io/api/protossBuild')
+			const res = await axios.get('https://db-final-nextapi-aikcx.run.goorm.io/api/zergBuild')
 			setUnits(res.data)
 		} catch (err) {
 			console.log(err)
@@ -36,7 +36,7 @@ const Table = () => {
 				<th>이미지</th>
 				<th>이름</th>
 				<th>자원</th>
-				<th>체력(실드량)</th>
+				<th>체력</th>
 				<th>방어력</th>
 				<th>지상공격</th>
 				<th>공중공격</th>
@@ -52,7 +52,7 @@ const Table = () => {
 							   <p>인구수: {unit.population}</p>
 							   <p>시간: {unit.time}</p>
 						   </td>
-					<td>{unit.health}({unit.shield})</td> 
+					<td>{unit.health}</td> 
 					<td>{unit.armor}</td>
 					<td>
 						<p>공격력: {unit.groundDamage==null ? 0 : unit.groundDamage}</p>

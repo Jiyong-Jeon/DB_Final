@@ -53,12 +53,23 @@ const Table = () => {
 					<td><img src={`https://db-final-nextapi-aikcx.run.goorm.io/${unit.imagePath}`} className='boxart'/></td>
 					<td>{unit.name}</td>
 					<td>{unit.character}</td>
-					<td><p>미네랄: {unit.mineral}, 가스: {unit.gas}</p> <p>인구수: {unit.population}, 시간: {unit.time}</p></td>
+					<td>
+						<p>미네랄: {unit.mineral}</p> 
+						<p>가스: {unit.gas}</p> 
+						<p>인구수: {unit.population}</p>
+						<p>시간: {unit.time}</p>
+					</td>
 					<td>{unit.health}({unit.shield})</td> 
 					<td>{unit.armor}</td>
 					<td>{unit.speed}</td>
-					<td>공격력: {unit.groundDamage==null ? 0 : unit.groundDamage}, 사거리:{unit.groundRange==null ? 0 : unit.groundRange}</td>
-					<td>공격력: {unit.airDamage==null ? 0 : unit.airDamage}, 사거리:{unit.airRange==null ? 0 : unit.airRange}</td>
+					<td>
+						<p>공격력: {unit.groundDamage==null ? 0 : unit.groundDamage}</p>
+						<p>사거리: {unit.groundRange==null ? 0 : unit.groundRange}</p>
+					</td>
+					<td>
+						<p>공격력: {unit.airDamage==null ? 0 : unit.airDamage}</p>
+						<p>사거리: {unit.airRange==null ? 0 : unit.airRange}</p>
+					</td>
 					<td>{unit.build}</td>
 					<td skill-tooltip-text={unit.skill_1_desc}>{unit.skill_1==null ? 'X' : unit.skill_1}</td>
 					<td skill-tooltip-text={unit.skill_2_desc}>{unit.skill_2==null ? 'X' : unit.skill_2}</td>
