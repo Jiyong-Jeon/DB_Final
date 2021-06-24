@@ -1,6 +1,6 @@
+// 20171017 전지용
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
 export default function protossUnitTable() {
 	return (
 		<div>
@@ -9,11 +9,9 @@ export default function protossUnitTable() {
 		</div>
 	)
 }
-
 const Header = () => {
-	return <h1><a href='https://db-final-nextapi-aikcx.run.goorm.io'>StarCraft Protoss Units</a></h1>
+	return <div><h1><a href='https://db-final-nextapi-aikcx.run.goorm.io'>StarCraft Protoss Units</a></h1><h2>20171017 전지용</h2></div> 
 }
-
 const Table = () => {
 	const [units, setUnits] = useState([])
 	
@@ -25,14 +23,12 @@ const Table = () => {
 			console.log(err)
 		}
 	}
-	
 	useEffect(() => {
 		fetchUnit()
 	}, [])
-	
 	return (
 		<table>
-			<tr>
+			<tr className='protossUnitMenu'>
 				<th>이미지</th>
 				<th>이름</th>
 				<th>특성</th>

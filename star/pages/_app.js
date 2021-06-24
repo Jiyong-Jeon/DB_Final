@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+// 20171017 전지용
 import '../styles/star.css'
 
 function MyApp({ Component, pageProps }) {

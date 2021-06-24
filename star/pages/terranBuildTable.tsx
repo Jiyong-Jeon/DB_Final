@@ -1,3 +1,4 @@
+// 20171017 전지용
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -11,7 +12,8 @@ export default function terranBuildTable() {
 }
 
 const Header = () => {
-	return <h1><a href='https://db-final-nextapi-aikcx.run.goorm.io'>StarCraft Terran Buildings</a></h1>
+	return <div><h1><a href='https://db-final-nextapi-aikcx.run.goorm.io'>StarCraft Terran Buildings</a></h1>
+	<h2>20171017 전지용</h2></div>
 }
 
 const Table = () => {
@@ -32,7 +34,7 @@ const Table = () => {
 	
 	return (
 		<table>
-			<tr>
+			<tr className='terranBuildMenu'>
 				<th>이미지</th>
 				<th>이름</th>
 				<th>자원</th>
